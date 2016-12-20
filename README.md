@@ -14,4 +14,4 @@ For AngularJS practice, implementing the following use cases:
 
 -> Call callback function after waiting 3 seconds. 
 
-## Note: First deploy this application over any server and then run, otherwise it will always give CORS error in browser console because we are using data.json file without any server.
+## Note: First deploy this application over any server and then run, otherwise it will always throw CORS (Cross Origin Request Server) error in browser's console because we are fetching data.json file without any server.

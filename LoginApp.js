@@ -1,6 +1,6 @@
 /* Angular Login Application */
 
-var app = angular.module("AngularApp", []);
+var app = angular.module("EmpLoginApp", []);
 
 app.factory('EmployeeFactory', function($q, $http){
 	this.getEmpByUserId = function(username){
@@ -8,8 +8,7 @@ app.factory('EmployeeFactory', function($q, $http){
 		var response ={};
 		var regExp = /[^a-zA-Z0-9 ]/;
 		if(!regExp.test(username)){			// user does not contains special charaters or not
-
-			//--------- calling api to get json data 
+			//calling api to get json data 
 			var httpOptions = {
 				method:"GET",
 				url:"data.json",
@@ -18,11 +17,10 @@ app.factory('EmployeeFactory', function($q, $http){
 					"Accept":"application/json"
 				}
 			};
-
 			$http(httpOptions).then(function(employees){
-				if(employees.length){
-					var employee = employees.find(function(emp){ return emp.username === username;});
-					if(employee.length){
+				if(employees.data.length){
+					var employee = employees.data.find(function(emp){ return emp.username === username;});
+					if(employee){
 						response  = { employee: employee};
 					} else { 
 						response = { message: "Employee does not exists!"};
@@ -34,9 +32,6 @@ app.factory('EmployeeFactory', function($q, $http){
 			}, function(error){
 				defer.reject(error);
 			});
-
-			//---------------------------------------
-			
 		} else {
 			response = { message: "Username contains special characters!"};
 			defer.reject(response);
@@ -64,7 +59,7 @@ app.service('AuthService', function(EmployeeFactory, $timeout) {
             }, function(error){
             	callback(error);
             });             
-        }, 3000);       
+        }, 1000);       
     };
 
     return this;
@@ -83,8 +78,10 @@ app.controller('EmployeeCtrl', ['$scope', 'AuthService', function($scope, AuthSe
         	if(response.success){
         		$scope.showHomepage = true;
         		$scope.successMsg = "User has signed-in successfully!";
+        		$scope.errorMsg = "";
         	} else {
         		$scope.showHomepage = false;
+        		$scope.successMsg = "";
         		$scope.errorMsg = response.message;
         	}
         });
