@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="AngularApp">
+<head>
+    <title>Angular Practice</title>
+    <!-- Angular JS Lib -->
+    <script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- My Main App Code -->
+    <script src="LoginApp.js" type="text/javascript" charset="utf-8"></script>
+</head>
+    <body ng-controller="EmployeeCtrl">
+        <div ng-hide="showHomepage">
+            <form>
+                Username:<input type="text" name="username" ng-model="emp.username"><br><br>
+                Password:<input type="password" name="password" ng-model="emp.password"><br><br>
+                <input type="submit" value="Submit" ng-click="doSignIn()" ng-disabled="!enableSubmitBtn()">
+            </form>
+        </div>
+        <div>
+            <span ng-show="successMsg">
+                <h2>{{ successMsg }}</h2>
+            </span>
+            <span ng-show="errorMsg" style="color: red;">
+                <h4>{{ errorMsg }}</h4>
+            </span>
+        </div>
+    </body>
+</html>
