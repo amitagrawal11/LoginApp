@@ -3,27 +3,6 @@
 var app = angular.module("AngularApp", []);
 
 app.factory('EmployeeFactory', function($q, $http){
-	var employees = [
-		{
-			"name":"Amit",
-			"age":26,
-			"username":"amit",
-			"password":"pass"
-		},
-		{
-			"name":"Sohan",
-			"age":22,
-			"username":"sohan1",
-			"password":"SOHAN"
-		},
-		{
-			"name":"Pooja",
-			"age":30,
-			"username":"pooja1",
-			"password":"POOJA"
-		}
-	];
-
 	this.getEmpByUserId = function(username){
 		var defer = $q.defer();
 		var response ={};
@@ -36,9 +15,7 @@ app.factory('EmployeeFactory', function($q, $http){
 				url:"data.json",
 				headers:{
 					"Content-Type":"application/json",
-					"Accept":"application/json",
-					"Access-Control-Allow-Origin": "*.*",
-					"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+					"Accept":"application/json"
 				}
 			};
 
