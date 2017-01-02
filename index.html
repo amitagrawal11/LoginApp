@@ -3,9 +3,7 @@
 <head>
     <title>Angular Practice</title>
     <!-- Angular JS Lib -->
-    <script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
-    <!-- My Main App Code -->
-    <script src="LoginApp.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/angular.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
     <body ng-controller="EmployeeCtrl">
         <div ng-hide="showHomepage">
@@ -23,5 +21,10 @@
                 <h4>{{ errorMsg }}</h4>
             </span>
         </div>
+
+        <!-- My Main App Code -->
+        <script src="LoginApp.js" type="text/javascript" charset="utf-8"></script>
+        <script src="services/authService.js" type="text/javascript" charset="utf-8"></script>
+        <script src="services/employeeFactory.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>
