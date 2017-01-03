@@ -1,4 +1,22 @@
-app.service('AuthService', function(employeeFactory, $timeout) {
+app.service('AuthService', function($rootScope, $http, $timeout, $sessionStorage, employeeFactory) {
+    this.setCredentials = function(username, password) {
+        $rootScope.globals = {
+            currentUser: {
+                username: username,
+                password: password
+            }
+        };
+
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + password; // jshint ignore:line
+        $sessionStorage.globals = $rootScope.globals;
+    };
+
+    this.resetCredentials = function() {
+        $rootScope.globals = {};
+        $sessionStorage.globals = {};
+        $http.defaults.headers.common.Authorization = 'Basic ';
+    };
+
     this.loginService = function(username, password, callback) {            
         $timeout(function() {                
             var response;                
