@@ -1,13 +1,14 @@
-app.service('AuthService', function($rootScope, $http, $timeout, $sessionStorage, employeeFactory) {
+app.service('AuthService', function($rootScope, $http, $timeout, $sessionStorage, employeeFactory, Base64) {
     this.setCredentials = function(username, password) {
+        var authData = Base64.encode(username + ':' + password);
         $rootScope.globals = {
             currentUser: {
                 username: username,
-                password: password
+                password: authData
             }
         };
 
-        $http.defaults.headers.common['Authorization'] = 'Basic ' + password; // jshint ignore:line
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + authData;
         $sessionStorage.globals = $rootScope.globals;
     };
 
