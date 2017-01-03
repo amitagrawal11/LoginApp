@@ -1,4 +1,4 @@
-app.config(function($routeProvider, $locationProvider) {
+app.config(function($routeProvider) {
     $routeProvider
         .when("/login", {
             controller: "LoginCtrl",
@@ -19,11 +19,6 @@ app.config(function($routeProvider, $locationProvider) {
     })
 
     .otherwise({ redirectTo: "/login" });
-
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-    });
 });
 
 /*app.run(function ($rootScope, $location, $cookieStore, $http) {
