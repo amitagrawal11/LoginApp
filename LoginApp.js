@@ -1,4 +1,4 @@
-var app = angular.module("EmpLoginApp", ['ngRoute', 'ngCookies', 'ngStorage']);
+var app = angular.module("EmpLoginApp", ['ngRoute', 'ngCookies', 'ngStorage', 'ui.router']);
 
 app.controller('LoginCtrl', function($scope, AuthService, $location) {
     $scope.disableSubmitBtn = true; //By default disabling submit button 

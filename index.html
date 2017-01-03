@@ -13,7 +13,8 @@
         </header>
         <div class="container">
             <div class="col-xs-offset-2 col-xs-8">
-                <div ng-view></div>
+                <!-- <div ng-view></div> --><!-- When routeProvider is used -->
+                <div ui-view></div>
             </div>
         </div>
     </div>
@@ -22,6 +23,8 @@
     <script src="lib/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="lib/angular-cookies.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="lib/angular-storage.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
+
     <!-- Bootstrap & jQuery -->
     <script src="bootstrap/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="bootstrap/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>

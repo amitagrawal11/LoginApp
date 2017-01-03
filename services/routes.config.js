@@ -1,24 +1,33 @@
-app.config(function($routeProvider) {
-    $routeProvider
-        .when("/login", {
-            controller: "LoginCtrl",
-            templateUrl: "views/login.html",
-            hideMenus: true
-        })
+app.config(function($routeProvider, $stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("/login");
 
-    .when("/register", {
+    $stateProvider.state("login", {        // use ui-view
+            url: "/login",
+            controller: "LoginCtrl",
+            templateUrl: "views/login.html"
+    }).state("register", {
+        url: "/register",
+        controller: "RegisterCtrl",
+        templateUrl: "views/register.html"
+    }).state("home", {
+        url: "/home",
+        controller: "HomeCtrl",
+        templateUrl: "views/home.html"
+    });
+
+    /*$routeProvider.when("/login", {           // use ng-view to render views 
+        controller: "LoginCtrl",
+        templateUrl: "views/login.html",
+        hideMenus: true
+    }).when("/register", {
         controller: "RegisterCtrl",
         templateUrl: "views/register.html",
         hideMenus: true
-    })
-
-    .when("/home", {
+    }).when("/home", {
         controller: "HomeCtrl",
         templateUrl: "views/home.html",
         hideMenus: true
-    })
-
-    .otherwise({ redirectTo: "/login" });
+    }).otherwise({ redirectTo: "/login" });*/
 });
 
 app.run(function($rootScope, $location, $sessionStorage, $http) {
