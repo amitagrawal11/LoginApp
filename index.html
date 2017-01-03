@@ -2,25 +2,24 @@
 <html ng-app="EmpLoginApp">
 <head>
     <title>Angular Practice</title>
-    <!-- Angular JS Lib -->
-    <script src="lib/angular.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
 </head>
-    <body ng-controller="EmployeeCtrl">
-        <div ng-hide="showHomepage">
-            <form>
-                Username:<input type="text" name="username" ng-model="emp.username"><br><br>
-                Password:<input type="password" name="password" ng-model="emp.password"><br><br>
-                <input type="submit" value="Submit" ng-click="doSignIn()" ng-disabled="!enableSubmitBtn()">
-            </form>
+    <body>
+        <div class="jumbotron">
+          <div class="container">
+            <div class="col-xs-offset-2 col-xs-8">
+              <div ng-view></div>
+            </div>
+          </div>
         </div>
-        <div>
-            <span ng-show="successMsg">
-                <h2>{{ successMsg }}</h2>
-            </span>
-            <span ng-show="errorMsg" style="color: red;">
-                <h4>{{ errorMsg }}</h4>
-            </span>
-        </div>
+
+        <!-- Angular JS Lib -->
+        <script src="lib/angular.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="lib/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Bootstrap & jQuery -->
+        <script src="bootstrap/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="bootstrap/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- My Main App Code -->
         <script src="LoginApp.js" type="text/javascript" charset="utf-8"></script>
