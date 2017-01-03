@@ -1,8 +1,6 @@
-/* Angular Login Application */
+var app = angular.module("EmpLoginApp", ['ngRoute']);
 
-var app = angular.module("EmpLoginApp", []);
-
-app.controller('EmployeeCtrl', ['$scope', 'AuthService', function($scope, AuthService) {
+app.controller('LoginCtrl', function($scope, AuthService, $location) {
     $scope.emp = {};
     $scope.emp.username = "";
     $scope.emp.password = "";
@@ -13,9 +11,11 @@ app.controller('EmployeeCtrl', ['$scope', 'AuthService', function($scope, AuthSe
     $scope.doSignIn = function() {
         AuthService.loginService($scope.emp.username, $scope.emp.password, function(response){
         	if(response.success){
-        		$scope.showHomepage = true;
+                //redirect it to home page
+                $location.path("/home");
+        		/*$scope.showHomepage = true;
         		$scope.successMsg = "User has signed-in successfully!";
-        		$scope.errorMsg = "";
+        		$scope.errorMsg = "";*/
         	} else {
         		$scope.showHomepage = false;
         		$scope.successMsg = "";
@@ -30,4 +30,4 @@ app.controller('EmployeeCtrl', ['$scope', 'AuthService', function($scope, AuthSe
         }
         return false;
     }
-}]);
+});
