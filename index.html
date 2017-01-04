@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="EmpLoginApp">
+<html>
 
 <head>
     <title>Angular Practice</title>
@@ -9,32 +9,18 @@
 <body>
     <div>
         <header class="page-header" style="text-align: center">
-            <h1>Employee App</h1>
+            <!-- <h1>Employee App</h1> -->
         </header>
         <div class="container">
             <div class="col-xs-offset-2 col-xs-8">
-                <!-- <div ng-view></div> --><!-- When routeProvider is used -->
+                <!-- <div ng-view></div> -->
+                <!-- When routeProvider is used -->
                 <div ui-view></div>
             </div>
         </div>
     </div>
-    <!-- Angular JS Lib -->
-    <script src="lib/angular.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="lib/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="lib/angular-cookies.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="lib/angular-storage.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="lib/angular-ui-router.min.js" type="text/javascript" charset="utf-8"></script>
-
-    <!-- Bootstrap & jQuery -->
-    <script src="bootstrap/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="bootstrap/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-    <!-- My Main App Code -->
-    <script src="LoginApp.js" type="text/javascript" charset="utf-8"></script>
-    <script src="services/routes.config.js" type="text/javascript" charset="utf-8"></script>
-    <script src="modules/home.ctrl.js" type="text/javascript" charset="utf-8"></script>
-    <script src="services/auth.srv.js" type="text/javascript" charset="utf-8"></script>
-    <script src="services/base64.srv.js" type="text/javascript" charset="utf-8"></script>
-    <script src="services/employee.fctr.js" type="text/javascript" charset="utf-8"></script>
+    <!-- Require JS Lib -->
+    <script data-main="require.config" src="lib/require.min.js" type="text/javascript" charset="utf-8"></script>
 </body>
 
 </html>
