@@ -13,13 +13,13 @@ requirejs.config({
         'login.ctrl'				: 'modules/login.ctrl',
 
         // Services 
-       	'routes'				    : 'services/routes.config',
        	'auth'					    : 'services/auth.srv',
        	'base64'					: 'services/base64.srv',
        	'employeeFctr'			    : 'services/employee.fctr',
 
         // Libraries
         'angular' 				    : 'lib/angular.min',
+        'angularAMD'                : 'lib/angular-amd.min',
         'jquery' 					: 'bootstrap/jquery.min',
         'bootstrap' 				: 'bootstrap/bootstrap.min',
         'ng-cookies'			    : 'lib/angular-cookies.min',
@@ -28,12 +28,11 @@ requirejs.config({
         'ui-router'		            : 'lib/angular-ui-router.min'
     },
     shim: {
-        'app'                       : ['angular'],
-        'bootstrap'                 : ['jquery'],
+        'angularAMD'                : ['angular'],
         'ui-router'                 : ['angular'],
         'ng-route'                  : ['angular'],
         'ng-cookies'                : ['angular'],
-        'ng-storage'                : ['angular']
+        'ng-storage'                : ['jquery', 'angular']
     },
 
     // 3. kick off the application
