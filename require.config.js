@@ -32,7 +32,7 @@ requirejs.config({
         'ui-router'                 : ['angular'],
         'ng-route'                  : ['angular'],
         'ng-cookies'                : ['angular'],
-        'ng-storage'                : ['jquery', 'angular']
+        'ng-storage'                : ['angular']
     },
 
     // 3. kick off the application

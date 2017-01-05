@@ -1,7 +1,7 @@
-define(['angularAMD', /*'ui-router',*/ 'ng-route', 'ng-cookies' ], function(angularAMD) {
-    var app = angular.module("EmpLoginApp", ['ngRoute','ngCookies'/*, 'ngStorage'*/]);
-    app.config(function($routeProvider/*, $stateProvider, $urlRouterProvider*/) {
-        /*$urlRouterProvider.otherwise("/login");
+define(['angularAMD', 'ui-router', /*'ng-route',*/ 'ng-cookies' , 'ng-storage'], function(angularAMD) {
+    var app = angular.module("EmpLoginApp", [/*'ngRoute',*/'ngCookies', 'ngStorage', 'ui.router']);
+    app.config(function(/*$routeProvider,*/ $stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise("/login");
 
         $stateProvider.state("login", angularAMD.route({ // use ui-view
             url: "/login",
@@ -13,9 +13,9 @@ define(['angularAMD', /*'ui-router',*/ 'ng-route', 'ng-cookies' ], function(angu
             controller: "HomeCtrl",
             controllerUrl: 'home.ctrl',
             templateUrl: "views/home.html"
-        }));*/
+        }));
 
-        $routeProvider.when("/login", angularAMD.route({           // use ng-view to render views 
+        /*$routeProvider.when("/login", angularAMD.route({           // use ng-view to render views 
             controller: "LoginCtrl",
             controllerUrl: 'login.ctrl',
             templateUrl: "views/login.html"
@@ -23,12 +23,13 @@ define(['angularAMD', /*'ui-router',*/ 'ng-route', 'ng-cookies' ], function(angu
             controller: "HomeCtrl",
             controllerUrl: 'home.ctrl',
             templateUrl: "views/home.html"
-        })).otherwise({ redirectTo: "/login" });
+        })).otherwise({ redirectTo: "/login" });*/
     });
 
-    app.run(function(/*$rootScope, $location, $sessionStorage, $http*/) {
+    app.run(function($rootScope, $location, $sessionStorage, $http) {
         // keep user logged in after page refresh
-        /*$rootScope.globals = $sessionStorage.globals || {};
+        $rootScope.globals = $sessionStorage.globals || {};
+        //$rootScope.globals = $cookieStore.get('globals') || {};
         if ($rootScope.globals.currentUser) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.password; // jshint ignore:line
         }
@@ -40,7 +41,7 @@ define(['angularAMD', /*'ui-router',*/ 'ng-route', 'ng-cookies' ], function(angu
             } else if ($location.path() === '/login' && $rootScope.globals.currentUser) {
                 $location.path('/home');
             }
-        });*/
+        });
     });
 
     return angularAMD.bootstrap(app);
