@@ -11,6 +11,7 @@ requirejs.config({
         'app'						: 'app',
         'home.ctrl' 				: 'modules/home.ctrl',
         'login.ctrl'				: 'modules/login.ctrl',
+        'register.ctrl'             : 'modules/register.ctrl',
 
         // Services 
        	'auth'					    : 'services/auth.srv',
@@ -32,7 +33,8 @@ requirejs.config({
         'ui-router'                 : ['angular'],
         'ng-route'                  : ['angular'],
         'ng-cookies'                : ['angular'],
-        'ng-storage'                : ['angular']
+        'ng-storage'                : ['angular'],
+        'home.ctrl'                 : ['jquery', 'bootstrap']
     },
 
     // 3. kick off the application

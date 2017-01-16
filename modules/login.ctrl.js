@@ -1,15 +1,14 @@
 define(['app','auth'], function(app) {
-    app.controller('LoginCtrl', function($scope, AuthService, $location) {
+    app.controller('LoginCtrl', function($scope, AuthService, $location, $state) {
         $scope.disableSubmitBtn = true; //By default disabling submit button 
 
-        // reset login status
-        AuthService.resetCredentials();
-
         $scope.doSignIn = function() {
+            // reset login status
+            AuthService.resetCredentials();
             AuthService.loginService($scope.username, $scope.password, function(response) {
                 if (response.success) {
                     AuthService.setCredentials($scope.username, $scope.password);
-                    $location.path("/home");
+                    $state.go('home');
                 } else {
                     $scope.errorMsg = response.message;
                 }
