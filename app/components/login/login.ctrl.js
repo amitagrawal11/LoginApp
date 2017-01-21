@@ -7,7 +7,7 @@ define(['app','auth'], function(app) {
             AuthService.resetCredentials();
             AuthService.loginService($scope.username, $scope.password).then(function(response){
                 if (response.success) {
-                    AuthService.setCredentials($scope.username, $scope.password);
+                    AuthService.setCredentials(response.user);
                     $state.go('home');
                 } else {
                     $scope.errorMsg = response.message;

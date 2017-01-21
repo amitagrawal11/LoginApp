@@ -1,12 +1,12 @@
-define(['app', 'employeeFctr', 'base64'], function(app) {
-    app.service('AuthService', function($rootScope, $http, $q, $timeout, $window, employeeFactory, Base64) {
-        this.setCredentials = function(username, password) {
-            var encryptData = Base64.encode(username + ':' + password);
+define(['app', 'user.fctr', 'base64'], function(app) {
+    app.service('AuthService', function($rootScope, $http, $q, $timeout, $window, userFactory, Base64) {
+        this.setCredentials = function(user) {
+            var encryptData = Base64.encode(user.username + ':' + user.password);
+
+            user.password = encryptData;
+
             $rootScope.globals = {
-                currentUser: {
-                    username: username,
-                    password: encryptData
-                }
+                currentUser: user
             };
 
             $http.defaults.headers.common['Authorization'] = 'Basic ' + encryptData;
@@ -21,13 +21,13 @@ define(['app', 'employeeFctr', 'base64'], function(app) {
 
         this.loginService = function(username, password) {            
             var defer = $q.defer();               
-            employeeFactory.getEmpByUserId(username).then(function(response) {
+            userFactory.getUser(username).then(function(response) {
                 if (!/[^a-zA-Z0-9 ]/.test(password)) {
-                    if (response.employee && response.employee.password === password) {
+                    if (response.user && response.user.password === password) {
                         response.success = true;
-                    } else if (response.employee && response.employee.password !== password) {
+                    } else if (response.user && response.user.password !== password) {
                         response.success = false;
-                        response.message = "Invalid employee credentials, Try again!";
+                        response.message = "Invalid user credentials, Try again!";
                     } else {
                         response.success = false;
                     }

@@ -16,7 +16,7 @@ requirejs.config({
         // Services 
        	'auth'					    : 'components/authenticate/auth.srv',
        	'base64'					: 'components/authenticate/base64.srv',
-       	'employeeFctr'			    : 'components/authenticate/employee.fctr',
+       	'user.fctr' 			    : 'components/authenticate/user.fctr',
 
         // Libraries
         'angular' 				    : 'vendors/angular/angular.min',

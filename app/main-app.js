@@ -10,20 +10,20 @@ define(['angularAMD', 'ui-router'], function(angularAMD) {
             url: "/login",
             controller: "LoginCtrl",
             controllerUrl: 'login.ctrl',
-            templateUrl: basePath + "login/login.html"
+            templateUrl: basePath + "login/login.tmp.html"
         }))
         .state("home", angularAMD.route({
             url: "/",
             //abstract: true,
             controller: "HomeCtrl",
             controllerUrl: 'home.ctrl',
-            templateUrl: basePath + "home/home.html"
+            templateUrl: basePath + "home/home.tmp.html"
         }))
         .state("register", angularAMD.route({
             url: "/register",
             controller: "RegisterCtrl",
             controllerUrl: 'register.ctrl',
-            templateUrl: basePath + "register/register.html"
+            templateUrl: basePath + "register/register.tmp.html"
         }));
 
     });

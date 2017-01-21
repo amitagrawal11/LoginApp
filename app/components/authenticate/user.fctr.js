@@ -1,24 +1,24 @@
 define(['app'], function(app) {
-    app.factory('employeeFactory', function($q, $http) {
-        this.getEmpByUserId = function(username) {
+    app.factory('userFactory', function($q, $http) {
+        this.getUser = function(username) {
             var defer = $q.defer();
             
-            // Initiating http get request to get employee data from data.json file 
+            // Initiating http get request to get user data from data.json file 
             $http.get('data.json').then(function(response){
                 var output = {};
                 var regExp = /[^a-zA-Z0-9 ]/;
                 if (!regExp.test(username)) { // user does not contains special charaters or not
                     if (response.data.length) {
-                        var employee = response.data.find(function(emp) {
+                        var user = response.data.find(function(emp) {
                             return emp.username === username;
                         });
-                        if (employee) {
-                            output = { employee: employee };
+                        if (user) {
+                            output = { user: user };
                         } else {
-                            output = { message: "Employee does not exists!" };
+                            output = { message: "User does not exists!" };
                         }
                     } else {
-                        output = { message: "No employee record found" };
+                        output = { message: "No user record found" };
                     }
                 } else {
                     output = { message: "Username contains special characters!" };
