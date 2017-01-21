@@ -1,6 +1,6 @@
 requirejs.config({
     //By default load any module IDs from js/lib
-    baseUrl: '',
+    baseUrl: 'app/',
     //except, if the module ID starts with "app",
     //load it from the js/app directory. paths
     //config is relative to the baseUrl, and
@@ -9,25 +9,25 @@ requirejs.config({
     paths: {
     	// Modules (Controllers)
         'app'						: 'main-app',
-        'home.ctrl' 				: 'modules/home.ctrl',
-        'login.ctrl'				: 'modules/login.ctrl',
-        'register.ctrl'             : 'modules/register.ctrl',
+        'home.ctrl' 				: 'components/home/home.ctrl',
+        'login.ctrl'				: 'components/login/login.ctrl',
+        'register.ctrl'             : 'components/register/register.ctrl',
 
         // Services 
-       	'auth'					    : 'services/auth.srv',
-       	'base64'					: 'services/base64.srv',
-       	'employeeFctr'			    : 'services/employee.fctr',
+       	'auth'					    : 'components/authenticate/auth.srv',
+       	'base64'					: 'components/authenticate/base64.srv',
+       	'employeeFctr'			    : 'components/authenticate/employee.fctr',
 
         // Libraries
-        'angular' 				    : 'lib/angular.min',
-        'angularAMD'                : 'lib/angularAMD.min',
-        'jquery' 					: 'bootstrap/jquery.min',
-        'bootstrap' 				: 'bootstrap/bootstrap.min',
-        'ng-cookies'			    : 'lib/angular-cookies.min',
-        'ng-route' 			        : 'lib/angular-route.min',
-        'ng-storage' 		        : 'lib/angular-storage.min',
-        'ui-router'		            : 'lib/angular-ui-router.min',
-        'metis-menu'               : 'dashboard/js/metisMenu.min'
+        'angular' 				    : 'vendors/angular/angular.min',
+        'angularAMD'                : 'vendors/angular/angularAMD.min',
+        'jquery' 					: 'vendors/jquery/jquery.min',
+        'bootstrap' 				: 'vendors/bootstrap/bootstrap.min',
+        'ng-cookies'			    : 'vendors/angular/angular-cookies.min',
+        'ng-route' 			        : 'vendors/angular/angular-route.min',
+        'ng-storage' 		        : 'vendors/angular/angular-storage.min',
+        'ui-router'		            : 'vendors/angular/angular-ui-router.min',
+        'metis-menu'                : 'vendors/metis-menu/metisMenu.min'
     },
     shim: {
         'metis-menu'               : ['jquery'],
