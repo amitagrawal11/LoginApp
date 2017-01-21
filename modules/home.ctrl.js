@@ -1,4 +1,4 @@
-define(['app','auth'], function(app) {
+define(['app','auth', 'metris-menu', 'start-min'], function(app) {
     app.controller('HomeCtrl', function($scope, $location, AuthService, $state) {
         angular.element('a').on('click', function(event){
         	event.preventDefault();

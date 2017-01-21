@@ -20,15 +20,20 @@ requirejs.config({
 
         // Libraries
         'angular' 				    : 'lib/angular.min',
-        'angularAMD'                : 'lib/angular-amd.min',
+        'angularAMD'                : 'lib/angularAMD.min',
         'jquery' 					: 'bootstrap/jquery.min',
         'bootstrap' 				: 'bootstrap/bootstrap.min',
         'ng-cookies'			    : 'lib/angular-cookies.min',
         'ng-route' 			        : 'lib/angular-route.min',
         'ng-storage' 		        : 'lib/angular-storage.min',
-        'ui-router'		            : 'lib/angular-ui-router.min'
+        'ui-router'		            : 'lib/angular-ui-router.min',
+        'metris-menu'               : 'dashboard/js/metisMenu.min',
+        'start-min'                 : 'dashboard/js/startmin'
+
     },
     shim: {
+        'metris-menu'               : ['jquery'],
+        'start-min'                 : ['jquery'],
         'angularAMD'                : ['angular'],
         'ui-router'                 : ['angular'],
         'ng-route'                  : ['angular'],
