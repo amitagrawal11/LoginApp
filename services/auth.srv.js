@@ -1,21 +1,21 @@
-define(['app', 'ng-storage', 'employeeFctr', 'base64'], function(app) {
-    app.service('AuthService', function($rootScope, $http, $timeout, $sessionStorage, employeeFactory, Base64) {
+define(['app', 'employeeFctr', 'base64'], function(app) {
+    app.service('AuthService', function($rootScope, $http, $timeout, $window, employeeFactory, Base64) {
         this.setCredentials = function(username, password) {
-            var authData = Base64.encode(username + ':' + password);
+            var encryptData = Base64.encode(username + ':' + password);
             $rootScope.globals = {
                 currentUser: {
                     username: username,
-                    password: authData
+                    password: encryptData
                 }
             };
 
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + authData;
-            $sessionStorage.globals = $rootScope.globals;
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + encryptData;
+            $window.sessionStorage.setItem( "globals", angular.toJson( $rootScope.globals ) );
         };
 
         this.resetCredentials = function() {
             $rootScope.globals = {};
-            $sessionStorage.globals = {};
+            $window.sessionStorage.removeItem( "globals" );  
             $http.defaults.headers.common.Authorization = 'Basic ';
         };
 

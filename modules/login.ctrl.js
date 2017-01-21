@@ -1,5 +1,5 @@
 define(['app','auth'], function(app) {
-    app.controller('LoginCtrl', function($scope, AuthService, $location, $state) {
+    app.controller('LoginCtrl', function($scope, AuthService, $state) {
         $scope.disableSubmitBtn = true; //By default disabling submit button 
 
         $scope.doSignIn = function() {

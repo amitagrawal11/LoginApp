@@ -8,7 +8,7 @@ requirejs.config({
     //the paths config could be for a directory.
     paths: {
     	// Modules (Controllers)
-        'app'						: 'app',
+        'app'						: 'main-app',
         'home.ctrl' 				: 'modules/home.ctrl',
         'login.ctrl'				: 'modules/login.ctrl',
         'register.ctrl'             : 'modules/register.ctrl',
@@ -27,19 +27,16 @@ requirejs.config({
         'ng-route' 			        : 'lib/angular-route.min',
         'ng-storage' 		        : 'lib/angular-storage.min',
         'ui-router'		            : 'lib/angular-ui-router.min',
-        'metris-menu'               : 'dashboard/js/metisMenu.min',
-        'start-min'                 : 'dashboard/js/startmin'
-
+        'metis-menu'               : 'dashboard/js/metisMenu.min'
     },
     shim: {
-        'metris-menu'               : ['jquery'],
-        'start-min'                 : ['jquery'],
+        'metis-menu'               : ['jquery'],
+        'bootstrap'                 : ['jquery'],
         'angularAMD'                : ['angular'],
         'ui-router'                 : ['angular'],
         'ng-route'                  : ['angular'],
         'ng-cookies'                : ['angular'],
-        'ng-storage'                : ['angular'],
-        'home.ctrl'                 : ['jquery', 'bootstrap']
+        'ng-storage'                : ['angular']
     },
 
     // 3. kick off the application
