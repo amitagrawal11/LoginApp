@@ -5,13 +5,15 @@ define(['app','auth'], function(app) {
         $scope.doSignIn = function() {
             // reset login status
             AuthService.resetCredentials();
-            AuthService.loginService($scope.username, $scope.password, function(response) {
+            AuthService.loginService($scope.username, $scope.password).then(function(response){
                 if (response.success) {
                     AuthService.setCredentials($scope.username, $scope.password);
                     $state.go('home');
                 } else {
                     $scope.errorMsg = response.message;
                 }
+            }, function(error){
+                $scope.errorMsg = error;
             });
         };
 

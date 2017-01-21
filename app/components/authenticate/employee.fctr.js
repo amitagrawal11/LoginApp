@@ -2,43 +2,33 @@ define(['app'], function(app) {
     app.factory('employeeFactory', function($q, $http) {
         this.getEmpByUserId = function(username) {
             var defer = $q.defer();
-            var response = {};
-            var regExp = /[^a-zA-Z0-9 ]/;
-            var employees = [{
-                "name": "Amit",
-                "age": 26,
-                "username": "amit",
-                "password": "pass"
-            }, {
-                "name": "Sohan",
-                "age": 22,
-                "username": "sohan1",
-                "password": "SOHAN"
-            }, {
-                "name": "Pooja",
-                "age": 30,
-                "username": "pooja1",
-                "password": "POOJA"
-            }];
-
-            if (!regExp.test(username)) { // user does not contains special charaters or not
-                if (employees.length) {
-                    var employee = employees.find(function(emp) {
-                        return emp.username === username;
-                    });
-                    if (employee) {
-                        response = { employee: employee };
+            
+            // Initiating http get request to get employee data from data.json file 
+            $http.get('data.json').then(function(response){
+                var output = {};
+                var regExp = /[^a-zA-Z0-9 ]/;
+                if (!regExp.test(username)) { // user does not contains special charaters or not
+                    if (response.data.length) {
+                        var employee = response.data.find(function(emp) {
+                            return emp.username === username;
+                        });
+                        if (employee) {
+                            output = { employee: employee };
+                        } else {
+                            output = { message: "Employee does not exists!" };
+                        }
                     } else {
-                        response = { message: "Employee does not exists!" };
+                        output = { message: "No employee record found" };
                     }
                 } else {
-                    response = { message: "No employee record found" };
+                    output = { message: "Username contains special characters!" };
                 }
-                defer.resolve(response);
-            } else {
-                response = { message: "Username contains special characters!" };
-                defer.reject(response);
-            }
+                defer.resolve(output);
+            }, function(error){
+                defer.reject(error);
+            });
+
+            // returning promise after getting results
             return defer.promise;
         };
 
