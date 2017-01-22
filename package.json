@@ -1,0 +1,30 @@
+{
+  "name": "webschool",
+  "version": "1.0.0",
+  "description": "Angular School Management Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amitagrawal11/LoginApp.git"
+  },
+  "keywords": [
+    "schoolApp",
+    "webapp",
+    "school",
+    "website",
+    "school",
+    "management"
+  ],
+  "author": "Amit Agrawal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amitagrawal11/LoginApp/issues"
+  },
+  "homepage": "https://github.com/amitagrawal11/LoginApp#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
