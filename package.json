@@ -26,5 +26,8 @@
   "homepage": "https://github.com/amitagrawal11/LoginApp#readme",
   "dependencies": {
     "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "grunt-msdeploy": "^0.1.3"
   }
 }
