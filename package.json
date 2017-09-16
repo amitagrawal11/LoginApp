@@ -28,6 +28,7 @@
     "express": "^4.14.0"
   },
   "devDependencies": {
+    "grunt-iis": "^0.1.5",
     "grunt-msdeploy": "^0.1.3"
   }
 }

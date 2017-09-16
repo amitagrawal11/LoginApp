@@ -7,19 +7,19 @@ module.exports = function(grunt) {
         //-- read dependencied from 'package.json' 
     	pkg : grunt.file.readJSON('package.json'), 
 
-        //-- clean build folder before copy file from cwd
+        //-- clean dist folder before copy file from cwd
         clean: {
-            build: {
-                src: [ 'build' ]
+            dist: {
+                src: [ 'dist' ]
             }
         },
         
-        //-- copy all files from curront working directory to build directory        
+        //-- copy all files from curront working directory to dist directory        
         copy: {
             files: {
-                cwd: 'app',  // set current working directory
+                cwd: 'src',  // set current working directory
                 src: '**/*',          // copy all files and subfolders
-                dest: 'build',        // destination folder
+                dest: 'dist',        // destination folder
                 expand: true          // required when using cwd
             }
         },
@@ -33,9 +33,9 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     expand: true,
-                    cwd: 'build',
+                    cwd: 'dist/app',
                     src: ['**/*.js'],
-                    dest: 'build'
+                    dest: 'dist/app'
                 }]
             }
         },
@@ -43,17 +43,28 @@ module.exports = function(grunt) {
         // cssmin : {
         //     combine : {
         //         files : {
-        //             'build/assets/stylesheets/main.min.css' : [
-        //                 'build/app/assets/stylesheets/animate.css',
-        //                 'build/app/assets/stylesheets/jquery.window.css',
-        //                 'build/app/assets/stylesheets/r7.base.css',
-        //                 'build/app/assets/stylesheets/r7.custom-gis.css',
-        //                 'build/app/assets/stylesheets/r7.modules.css',
-        //                 'build/app/assets/stylesheets/style.css'
+        //             'dist/assets/stylesheets/main.min.css' : [
+        //                 'dist/app/assets/stylesheets/animate.css',
+        //                 'dist/app/assets/stylesheets/jquery.window.css',
+        //                 'dist/app/assets/stylesheets/r7.base.css',
+        //                 'dist/app/assets/stylesheets/r7.custom-gis.css',
+        //                 'dist/app/assets/stylesheets/r7.modules.css',
+        //                 'dist/app/assets/stylesheets/style.css'
         //             ]
         //         }
         //     }
         // },
+
+        iis: {
+            developer: {
+              physicalPath : "dist",
+              site : 'Default Web Site',
+              path : 'NewSite',
+              pool : 'DefaultAppPool',
+              bindings: 'http/*:9001:localhost',
+              managedRuntimeVersion : 'v4.0'
+            }
+        },
     });
 
     //-- load the plugins
@@ -61,8 +72,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-iis');
 
     // Default task(s).
-	grunt.registerTask('default', ['clean','copy', 'uglify']);
+	grunt.registerTask('default', ['clean','copy', 'uglify', 'iis']);
 	
 };
