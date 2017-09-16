@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         //     }
         // },
 
-        iis: {
+        /* iis: {
             developer: {
               physicalPath : "dist",
               site : 'Default Web Site',
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
               bindings: 'http/*:9001:localhost',
               managedRuntimeVersion : 'v4.0'
             }
-        },
+        }, */
     });
 
     //-- load the plugins
@@ -72,9 +72,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-iis');
+    //grunt.loadNpmTasks('grunt-iis');
 
     // Default task(s).
-	grunt.registerTask('default', ['clean','copy', 'uglify', 'iis']);
+	grunt.registerTask('default', ['clean','copy', 'uglify']);
+	//grunt.registerTask('default', ['clean','copy', 'uglify', 'iis']);
 	
 };
