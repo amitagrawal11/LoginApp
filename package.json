@@ -25,7 +25,13 @@
   },
   "homepage": "https://github.com/amitagrawal11/LoginApp#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-uglify": "^3.1.0",
+    "grunt-iis": "^0.1.5"
   },
   "devDependencies": {
     "grunt-iis": "^0.1.5",
